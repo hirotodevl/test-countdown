@@ -4,30 +4,32 @@
   <meta charset="UTF-8">
   <title>期末考査カウントダウン</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
     body {
-      font-family: "Arial", sans-serif;
+      font-family: 'Share Tech Mono', monospace;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #f7f7f7;
+      background: #000;
       margin: 0;
+      color: #0ff; /* デジタル時計の青っぽい色 */
     }
     .countdown {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       text-align: center;
     }
     h1 {
+      font-size: 28px;
       margin-bottom: 20px;
-      font-size: 24px;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
     }
     #timer {
-      font-size: 32px;
+      font-size: 48px;
       font-weight: bold;
-      color: #333;
+      text-shadow: 0 0 15px #0ff, 0 0 30px #0ff, 0 0 45px #0ff;
+      letter-spacing: 2px;
     }
   </style>
 </head>
@@ -56,7 +58,7 @@
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
       document.getElementById("timer").innerText =
-        `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+        `${days}日 ${hours.toString().padStart(2, '0')}時間 ${minutes.toString().padStart(2, '0')}分 ${seconds.toString().padStart(2, '0')}秒`;
     }
 
     setInterval(updateCountdown, 1000);
