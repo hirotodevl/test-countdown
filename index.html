@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>テストまでのカウントダウン</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f7f7f7;
+      margin: 0;
+    }
+    .countdown {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    #timer {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown">
+    <h1>テストまでのカウントダウン</h1>
+    <div id="timer"></div>
+  </div>
+
+  <script>
+    // テスト日を設定（2025年9月11日 08:00）
+    const testDate = new Date("2025-09-11T08:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = testDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("timer").innerText = "テスト開始！";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").innerText =
+        `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
